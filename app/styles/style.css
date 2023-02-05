@@ -1,1 +1,78 @@
-/*# sourceMappingURL=style.css.map */
+@font-face {
+  font-family: "retrogramregular";
+  src: url("../../font/web_font/retrogram_1.0.1-webfont.woff2") format("woff2"), url("../../font/web_font/retrogram_1.0.1-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "retrogramregular";
+}
+
+img {
+  image-rendering: optimizeSpeed; /* STOP SMOOTHING, GIVE ME SPEED  */
+  image-rendering: -moz-crisp-edges; /* Firefox                        */
+  image-rendering: -o-crisp-edges; /* Opera                          */ /* Chrome (and eventually Safari) */
+  image-rendering: pixelated; /* Universal support since 2021   */
+  image-rendering: optimize-contrast; /* CSS3 Proposed                  */
+  -ms-interpolation-mode: nearest-neighbor; /* IE8+                           */
+}
+
+body {
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(58, 166, 255);
+}
+
+.desktop-env {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+}
+.desktop-env .desktop-wallpaper {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.desktop-env .taskbar {
+  position: absolute;
+  display: flex;
+  height: 65px;
+  bottom: 0;
+  width: 100vw;
+}
+.desktop-env .taskbar .taskbar-background {
+  position: absolute;
+  display: flex;
+  height: 65px;
+  bottom: 0;
+  width: 100vw;
+}
+.desktop-env .taskbar .taskbar-icons {
+  position: absolute;
+  display: flex;
+  gap: 5px;
+  left: 10px;
+  top: 10px;
+  height: 45px;
+}
+.desktop-env .taskbar .taskbar-icons .tasks-container {
+  width: 100%;
+}
+.desktop-env .taskbar .taskbar-icons .time {
+  position: relative;
+}
+.desktop-env .taskbar .taskbar-icons .time img {
+  height: 100%;
+}
+.desktop-env .taskbar .taskbar-icons .time p {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.8rem;
+}/*# sourceMappingURL=style.css.map */
