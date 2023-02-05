@@ -27,32 +27,38 @@ body {
   background-color: rgb(58, 166, 255);
 }
 
+/* ---------------------------- DESKTOP CONTAINER --------------------------- */
 .desktop-env {
   position: absolute;
   width: 100vw;
   height: 100vh;
 }
-.desktop-env .desktop-wallpaper {
+
+.desktop-wallpaper {
   position: absolute;
   width: 100%;
   top: 50%;
   transform: translateY(-50%);
 }
-.desktop-env .taskbar {
+
+/* --------------------------------- TASKBAR -------------------------------- */
+.taskbar {
   position: absolute;
   display: flex;
   height: 65px;
   bottom: 0;
   width: 100vw;
 }
-.desktop-env .taskbar .taskbar-background {
+
+.taskbar-background {
   position: absolute;
   display: flex;
   height: 65px;
   bottom: 0;
   width: 100vw;
 }
-.desktop-env .taskbar .taskbar-icons {
+
+.taskbar-icons {
   position: absolute;
   display: flex;
   gap: 5px;
@@ -60,19 +66,61 @@ body {
   top: 10px;
   height: 45px;
 }
-.desktop-env .taskbar .taskbar-icons .tasks-container {
+
+.tasks-container {
   width: 100%;
 }
-.desktop-env .taskbar .taskbar-icons .time {
+
+.time {
   position: relative;
 }
-.desktop-env .taskbar .taskbar-icons .time img {
+.time img {
   height: 100%;
 }
-.desktop-env .taskbar .taskbar-icons .time p {
+.time p {
   position: absolute;
   top: 10px;
   left: 50%;
   transform: translateX(-50%);
   font-size: 1.8rem;
+}
+
+/* -------------------------------- SHORTCUTS ------------------------------- */
+.desktop-shortcuts {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}
+.desktop-shortcuts div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+.desktop-shortcuts img {
+  width: 75px;
+}
+.desktop-shortcuts p {
+  position: relative;
+  font-size: 2rem;
+  left: 2px;
+}
+
+/* ---------------------------------- PAGES --------------------------------- */
+.page {
+  position: absolute;
+  width: 300px;
+  height: 400px;
+  background: white;
+  resize: both;
+  overflow: auto;
+}
+.page #page-header {
+  width: 100%;
+  height: 30px;
+  background-color: aquamarine;
 }/*# sourceMappingURL=style.css.map */

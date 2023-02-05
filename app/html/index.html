@@ -11,6 +11,7 @@
 </head>
 <body>
     <section class="desktop-env">
+        <!-- ------------------------------- TASKBAR ------------------------------- -->
         <div class="taskbar" id="taskbar">
             <div class="taskbar-background">
                 <img src="../../ui/task_bar/bg/left.png" alt="taskbar-left">
@@ -27,6 +28,21 @@
                     <p id="time"></p>
                 </div>
             </div>
+        </div>
+        <!-- ------------------------------ SHORTCUTS ------------------------------ -->
+        <div class="desktop-shortcuts">
+            <div class="shortcut" ondblclick="openProfile()">
+                <img src="../../ui/shortcut_icons/profile.png" alt="profile-icon">
+                <p>PROFILE</p>
+            </div>  
+            <div class="shortcut" ondblclick="openHome()">
+                <img src="../../ui/shortcut_icons/home.png" alt="profile-icon">
+                <p>HOME</p>
+            </div>
+        </div>
+        <!-- -------------------------------- PAGES -------------------------------- -->
+        <div class="profile-page page" id="page-profile">
+            <div id="page-header"></div>
         </div>
     </section>
 </body>
