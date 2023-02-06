@@ -41,6 +41,7 @@ function dragElement(element) {
         document.onmouseup = () => { // stop moving if the mouse is released
             document.onmouseup = null
             document.onmousemove = null
+            element.style.zIndex = 1
         }
         document.onmousemove = (e) => { // function is called when mouse is moved
             e.preventDefault()
@@ -48,10 +49,41 @@ function dragElement(element) {
             pos2 = pos4 - e.clientY
             pos3 = e.clientX
             pos4 = e.clientY
-            if (element.offsetTop - pos2 >= 0 && element.offsetTop - pos2 <= (document.body.clientHeight - 95) && element.offsetLeft - pos1 >= 0 && element.offsetLeft - pos1 <= (document.body.clientWidth - element.clientWidth)) {
-                element.style.top = (element.offsetTop - pos2) + "px"
-                element.style.left = (element.offsetLeft - pos1) + "px"
+            console.log(element);
+            console.log(element.getBoundingClientRect().top);
+            console.log(element.clientHeight);
+            if (element.getBoundingClientRect().top >= 0 && element.getBoundingClientRect().top <= (document.body.clientHeight - 95) && element.offsetLeft - pos1 >= 0 && element.offsetLeft - pos1 <= (document.body.clientWidth - element.clientWidth)) {
+                element.style.top = `${element.offsetTop - pos2}px`
+                element.style.left = `${element.offsetLeft - pos1}px`
+                element.style.zIndex = 2
+                console.log(element.style.top);
+                element.getBoundingClientRect().top = 50;
+            } else if (element.getBoundingClientRect().top <= 0) {
+                element.style.top = '0px'
+            } else if (element.getBoundingClientRect().top >= (document.body.clientHeight - 95)) {
+                element.style.top = `${document.body.clientHeight - 95}`
             }
         }
     }
 }
+
+interact('.resizable').resizable({
+    edges: { top: true, left: true, bottom: true, right: true },
+    margin: 10,
+    listeners: {
+        move: function (event) {
+            let { x, y } = event.target.dataset
+
+            x = (parseFloat(x) || 0) + event.deltaRect.left
+            y = (parseFloat(y) || 0) + event.deltaRect.top
+
+            Object.assign(event.target.style, {
+                width: `${event.rect.width}px`,
+                height: `${event.rect.height}px`,
+                transform: `translate(${x}px, ${y}px)`
+            })
+
+            Object.assign(event.target.dataset, { x, y })
+        }
+    }
+})
