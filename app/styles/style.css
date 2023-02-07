@@ -20,6 +20,15 @@ img {
   -ms-interpolation-mode: nearest-neighbor; /* IE8+                           */
 }
 
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
 body {
   overflow: hidden;
   height: 100vh;
@@ -29,6 +38,10 @@ body {
 
 .resizable {
   touch-action: none;
+}
+
+.hide {
+  display: none !important;
 }
 
 /* ---------------------------- DESKTOP CONTAINER --------------------------- */
@@ -72,10 +85,6 @@ body {
   height: 45px;
 }
 
-.tasks-container {
-  width: 100%;
-}
-
 .time {
   position: relative;
 }
@@ -88,6 +97,15 @@ body {
   left: 50%;
   transform: translateX(-50%);
   font-size: 1.8rem;
+}
+
+.tasks-container {
+  width: 100%;
+}
+
+.task {
+  height: 100%;
+  display: flex;
 }
 
 /* -------------------------------- SHORTCUTS ------------------------------- */
@@ -126,6 +144,8 @@ body {
   box-shadow: inset 0px -5px hsl(0deg, 0%, 47%), inset -5px 0px hsl(0deg, 0%, 47%);
   outline: 5px solid hsl(0deg, 0%, 69%);
   outline-offset: -10px;
+  top: 150px;
+  left: 300px;
 }
 
 .header {

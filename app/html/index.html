@@ -11,7 +11,7 @@
 <body>
     <section class="desktop-env">
         <!-- ------------------------------- TASKBAR ------------------------------- -->
-        <div class="taskbar" id="taskbar">
+        <div class="taskbar unselectable" id="taskbar">
             <div class="taskbar-background">
                 <img src="../../ui/task_bar/bg/left.png" alt="taskbar-left">
                 <img src="../../ui/task_bar/bg/middle.png" alt="taskbar-middle" id="taskbar-middle">
@@ -20,7 +20,9 @@
             <div class="taskbar-icons" id="taskbar-icons">
                 <img src="../../ui/task_bar/start/index.png" alt="start-button" id="start-button">
                 <div class="tasks-container">
-
+                    <div class="task hide" id="task-profile" onclick="taskClick(this, 'page-profile')">
+                        <img src="../../ui/task_bar/tasks/profile/index.png" alt="profile-task">
+                    </div>
                 </div>
                 <div class="time">
                     <img src="../../ui/task_bar/time/index.png" alt="time-bg">
@@ -29,8 +31,8 @@
             </div>
         </div>
         <!-- ------------------------------ SHORTCUTS ------------------------------ -->
-        <div class="desktop-shortcuts">
-            <div class="shortcut" ondblclick="openProfile()">
+        <div class="desktop-shortcuts unselectable">
+            <div class="shortcut" ondblclick="taskClick(document.getElementById('task-profile'), 'page-profile')">
                 <img src="../../ui/shortcut_icons/profile.png" alt="profile-icon">
                 <p>PROFILE</p>
             </div>  
@@ -40,13 +42,15 @@
             </div>
         </div>
         <!-- -------------------------------- PAGES -------------------------------- -->
-        <div class="page resizable" id="page-profile">
-            <div id="page-profile-header" class="header"></div>
+        <div class="page resizable hide" id="page-profile">
+            <div id="page-profile-header" class="header">
+
+            </div>
         </div>
-        <div class="page resizable" id="page-home">
+        <!-- <div class="page resizable" id="page-home">
             <div id="page-home-header" class="header"></div>
             <p>testing text</p>
-        </div>
+        </div> -->
     </section>
     <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.js"></script>
     <script src="../scripts/index.js"></script>

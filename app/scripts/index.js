@@ -1,39 +1,14 @@
-function generateTaskbar() {
-    let date = new Date()
-    document.getElementById('taskbar-middle').style.width = `${document.body.clientWidth - 20}px`
-    document.getElementById('taskbar-icons').style.width = `${document.body.clientWidth - 20}px`
-    document.getElementById('time').innerHTML = `${Math.abs(new Date().getHours() - 12)}:${new Date().getMinutes()}`
+/* ----------------------------- INNIT FUNCTION ----------------------------- */
+function init() {
+    generateTaskbar()
+    dragElement(document.getElementById('page-profile'))
+    initInteractJS()
 }
 
-
-let startButton = document.getElementById('start-button'),
-    shortcutProfile = document.getElementById('shortcut-profile'),
-    shortcutHome = document.getElementById('shortcut--home')
-startButton.addEventListener('click', e => { // start button click even listener
-    if (startButton.getAttribute('src') === '../../ui/task_bar/start/index.png') {
-        startButton.setAttribute('src', '../../ui/task_bar/start/pressed.png')
-    } else {
-        startButton.setAttribute('src', '../../ui/task_bar/start/index.png')
-    }
-})
-
-function openProfile() {
-    console.log('lololo');
-}
-
-
-
-generateTaskbar()
-
-dragElement(document.getElementById('page-profile'))
-dragElement(document.getElementById('page-home'))
-
+/* -------------------------- DRAG ELEMENT FUNCTION ------------------------- */
 function dragElement(element) {
     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0
-    console.log(element.id);
-    document.getElementById(`${element.id}-header`).onmousedown = dragMouseDown
-
-    function dragMouseDown(e) {
+    document.getElementById(`${element.id}-header`).onmousedown = (e) => {
         console.log(e)
         e.preventDefault()
         pos3 = e.clientX // get mouse position
@@ -49,41 +24,66 @@ function dragElement(element) {
             pos2 = pos4 - e.clientY
             pos3 = e.clientX
             pos4 = e.clientY
-            console.log(element);
-            console.log(element.getBoundingClientRect().top);
-            console.log(element.clientHeight);
-            if (element.getBoundingClientRect().top >= 0 && element.getBoundingClientRect().top <= (document.body.clientHeight - 95) && element.offsetLeft - pos1 >= 0 && element.offsetLeft - pos1 <= (document.body.clientWidth - element.clientWidth)) {
-                element.style.top = `${element.offsetTop - pos2}px`
-                element.style.left = `${element.offsetLeft - pos1}px`
-                element.style.zIndex = 2
-                console.log(element.style.top);
-                element.getBoundingClientRect().top = 50;
-            } else if (element.getBoundingClientRect().top <= 0) {
-                element.style.top = '0px'
-            } else if (element.getBoundingClientRect().top >= (document.body.clientHeight - 95)) {
-                element.style.top = `${document.body.clientHeight - 95}`
-            }
+            element.style.top = `${Math.max(0, Math.min(element.getBoundingClientRect().top - pos2, document.body.clientHeight - 95))}px`
+            element.style.left = `${Math.max(0, Math.min(element.getBoundingClientRect().left - pos1, document.body.clientWidth - element.clientWidth))}px`
         }
     }
 }
 
-interact('.resizable').resizable({
-    edges: { top: true, left: true, bottom: true, right: true },
-    margin: 10,
-    listeners: {
-        move: function (event) {
-            let { x, y } = event.target.dataset
-
-            x = (parseFloat(x) || 0) + event.deltaRect.left
-            y = (parseFloat(y) || 0) + event.deltaRect.top
-
-            Object.assign(event.target.style, {
-                width: `${event.rect.width}px`,
-                height: `${event.rect.height}px`,
-                transform: `translate(${x}px, ${y}px)`
-            })
-
-            Object.assign(event.target.dataset, { x, y })
+/* ------------------------- RESIZE WINDOW FUNCTION ------------------------- */
+function initInteractJS() {
+    interact('.resizable').resizable({
+        edges: { top: false, left: false, bottom: true, right: true },
+        margin: 10,
+        listeners: {
+            move: function (event) {
+                let { x, y } = event.target.dataset
+    
+                x = (parseFloat(x) || 0) + event.deltaRect.left
+                y = (parseFloat(y) || 0) + event.deltaRect.top
+    
+                Object.assign(event.target.style, {
+                    width: `${event.rect.width}px`,
+                    height: `${event.rect.height}px`,
+                    transform: `translate(${x}px, ${y}px)`
+                })
+    
+                Object.assign(event.target.dataset, { x, y })
+            }
         }
+    })
+}
+
+
+/* --------------------- MISC / FUNCTIONALITY FUNCTIONS --------------------- */
+function taskClick(e, selector) {
+    e.classList.remove('hide')
+    document.getElementById(selector).classList.toggle('hide')
+    console.log(document.getElementById(selector).children);
+    console.log(e.children[0].getAttribute('src'));
+    if (e.children[0].getAttribute('src') === '../../ui/task_bar/tasks/profile/index.png') {
+        e.children[0].setAttribute('src', '../../ui/task_bar/tasks/profile/pressed.png')
+    } else {
+        e.children[0].setAttribute('src', '../../ui/task_bar/tasks/profile/index.png')
+    }
+}
+
+function generateTaskbar() {
+    document.getElementById('taskbar-middle').style.width = `${document.body.clientWidth - 20}px`
+    document.getElementById('taskbar-icons').style.width = `${document.body.clientWidth - 20}px`
+    document.getElementById('time').innerHTML = `${Math.abs(new Date().getHours() - 12)}:${new Date().getMinutes()}`
+}
+
+document.getElementById('start-button').addEventListener('click', e => { // start button click even listener
+    if (document.getElementById('start-button').getAttribute('src') === '../../ui/task_bar/start/index.png') {
+        document.getElementById('start-button').setAttribute('src', '../../ui/task_bar/start/pressed.png')
+    } else {
+        document.getElementById('start-button').setAttribute('src', '../../ui/task_bar/start/index.png')
     }
 })
+
+function openProfile() {
+    document.getElementById('page-profile').classList.remove('hide')
+}
+
+init()
