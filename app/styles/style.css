@@ -12,8 +12,7 @@
 }
 
 img {
-  image-rendering: optimizeSpeed; /* STOP SMOOTHING, GIVE ME SPEED  */
-  image-rendering: -moz-crisp-edges; /* Firefox                        */
+  image-rendering: optimizeSpeed; /* STOP SMOOTHING, GIVE ME SPEED  */ /* Firefox                        */
   image-rendering: -o-crisp-edges; /* Opera                          */ /* Chrome (and eventually Safari) */
   image-rendering: pixelated; /* Universal support since 2021   */
   image-rendering: optimize-contrast; /* CSS3 Proposed                  */
@@ -24,7 +23,6 @@ img {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -moz-user-select: none;
-  -ms-user-select: none;
   -o-user-select: none;
   user-select: none;
 }
@@ -42,6 +40,13 @@ body {
 
 .hide {
   display: none !important;
+}
+
+.fullscreen {
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: calc(100vh - 65px) !important;
 }
 
 /* ---------------------------- DESKTOP CONTAINER --------------------------- */
@@ -152,4 +157,8 @@ body {
   width: 100%;
   height: 30px;
   background-color: hsl(0deg, 0%, 69%);
+  display: flex;
+  justify-content: right;
+  gap: 10px;
+  border-bottom: 5px solid hsl(0deg, 0%, 69%);
 }/*# sourceMappingURL=style.css.map */

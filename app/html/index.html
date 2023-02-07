@@ -44,13 +44,11 @@
         <!-- -------------------------------- PAGES -------------------------------- -->
         <div class="page resizable hide" id="page-profile">
             <div id="page-profile-header" class="header">
-
+                <img src="../../ui/window/minimize.png" alt="minimize-window" onclick="taskClick(document.getElementById('task-profile'), 'page-profile')">
+                <img src="../../ui/window/full.png" alt="fullscreen" onclick="fullscreenWindow(this.parentElement.parentElement)">
+                <img src="../../ui/window/close.png" alt="close-window" onclick="closeWindow(document.getElementById('task-profile'), this.parentElement.parentElement)">
             </div>
         </div>
-        <!-- <div class="page resizable" id="page-home">
-            <div id="page-home-header" class="header"></div>
-            <p>testing text</p>
-        </div> -->
     </section>
     <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.js"></script>
     <script src="../scripts/index.js"></script>

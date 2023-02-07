@@ -3,6 +3,7 @@ function init() {
     generateTaskbar()
     dragElement(document.getElementById('page-profile'))
     initInteractJS()
+    initEventListeners()
 }
 
 /* -------------------------- DRAG ELEMENT FUNCTION ------------------------- */
@@ -74,16 +75,26 @@ function generateTaskbar() {
     document.getElementById('time').innerHTML = `${Math.abs(new Date().getHours() - 12)}:${new Date().getMinutes()}`
 }
 
-document.getElementById('start-button').addEventListener('click', e => { // start button click even listener
-    if (document.getElementById('start-button').getAttribute('src') === '../../ui/task_bar/start/index.png') {
-        document.getElementById('start-button').setAttribute('src', '../../ui/task_bar/start/pressed.png')
-    } else {
-        document.getElementById('start-button').setAttribute('src', '../../ui/task_bar/start/index.png')
-    }
-})
+function initEventListeners() {
+    document.getElementById('start-button').addEventListener('click', e => { // start button click even listener
+        if (document.getElementById('start-button').getAttribute('src') === '../../ui/task_bar/start/index.png') {
+            document.getElementById('start-button').setAttribute('src', '../../ui/task_bar/start/pressed.png')
+        } else {
+            document.getElementById('start-button').setAttribute('src', '../../ui/task_bar/start/index.png')
+        }
+    })
+}
 
-function openProfile() {
-    document.getElementById('page-profile').classList.remove('hide')
+function closeWindow(task, window) {
+    task.classList.add('hide')
+    window.classList.add('hide')
+}
+
+function fullscreenWindow(e) {
+    e.style.top = 0
+    e.style.left = 0
+    e.style.width = '100vw'
+    e.style.height = 'calc(100vh - 65px)'
 }
 
 init()
