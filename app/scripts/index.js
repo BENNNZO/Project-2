@@ -31,7 +31,7 @@ function dragElement(element) {
     }
 }
 
-/* ------------------------- RESIZE WINDOW FUNCTION ------------------------- */
+/* ----------------------- RESIZEABLE WINDOW FUNCTION ----------------------- */
 function initInteractJS() {
     interact('.resizable').resizable({
         edges: { top: false, left: false, bottom: true, right: true },
@@ -73,6 +73,10 @@ function generateTaskbar() {
     document.getElementById('taskbar-middle').style.width = `${document.body.clientWidth - 20}px`
     document.getElementById('taskbar-icons').style.width = `${document.body.clientWidth - 20}px`
     document.getElementById('time').innerHTML = `${Math.abs(new Date().getHours() - 12)}:${new Date().getMinutes()}`
+    setInterval(() => {
+        document.getElementById('time').innerHTML = `${Math.abs(new Date().getHours() - 12)}:${new Date().getMinutes()}`
+        console.log('Updated Time');
+    }, 5000);
 }
 
 function initEventListeners() {

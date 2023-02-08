@@ -43,10 +43,24 @@
         </div>
         <!-- -------------------------------- PAGES -------------------------------- -->
         <div class="page resizable hide" id="page-profile">
-            <div id="page-profile-header" class="header">
+            <div id="page-profile-header" class="page-header unselectable">
                 <img src="../../ui/window/minimize.png" alt="minimize-window" onclick="taskClick(document.getElementById('task-profile'), 'page-profile')">
                 <img src="../../ui/window/full.png" alt="fullscreen" onclick="fullscreenWindow(this.parentElement.parentElement)">
                 <img src="../../ui/window/close.png" alt="close-window" onclick="closeWindow(document.getElementById('task-profile'), this.parentElement.parentElement)">
+            </div>
+            <div class="profile-content">
+                <div class="profile-header">
+                    <img src="../../test/profile.png" alt="profile-picture">
+                    <img src="../../ui/misc/edit_icon_nobg.png" alt="edit-button">
+                    <p class="profile-name">PROFILE NAME</p>
+                    <img src="../../ui/misc/edit_icon_nobg.png" alt="edit-button">
+                </div>
+                <div class="break-line"></div>
+                <p class="profile-bio">test bio for test profile</p>
+                <div class="break-line"></div>
+                <div class="profile-posts">
+
+                </div>
             </div>
         </div>
     </section>
