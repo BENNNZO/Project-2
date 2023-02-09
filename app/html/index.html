@@ -14,14 +14,20 @@
         <div class="taskbar unselectable" id="taskbar">
             <div class="taskbar-background">
                 <img src="../../ui/task_bar/bg/left.png" alt="taskbar-left">
-                <img src="../../ui/task_bar/bg/middle.png" alt="taskbar-middle" id="taskbar-middle">
-                <img src="../../ui/task_bar/bg/right.png" alt="taskbar-right">
+                <img src="../../ui/task_bar/bg/middle.png" alt="taskbar middle" id="taskbar-middle">
+                <img src="../../ui/task_bar/bg/right.png" alt="taskbar right">
             </div>
             <div class="taskbar-icons" id="taskbar-icons">
-                <img src="../../ui/task_bar/start/index.png" alt="start-button" id="start-button">
+                <img src="../../ui/task_bar/start/index.png" alt="start button" id="start-button">
+                <div class="start-container hide" id="start-container">
+                    <img src="../../ui/task_bar/start/logout.png" alt="logout button">
+                </div>
                 <div class="tasks-container">
                     <div class="task hide" id="task-profile" onclick="taskClick(this, 'page-profile')">
-                        <img src="../../ui/task_bar/tasks/profile/index.png" alt="profile-task">
+                        <img src="../../ui/task_bar/tasks/profile/index.png" alt="profile task">
+                    </div>
+                    <div class="task hide" id="task-home" onclick="taskClick(this, 'page-home')">
+                        <img src="../../ui/task_bar/tasks/home/index.png" alt="profile home">
                     </div>
                 </div>
                 <div class="time">
@@ -33,17 +39,18 @@
         <!-- ------------------------------ SHORTCUTS ------------------------------ -->
         <div class="desktop-shortcuts unselectable">
             <div class="shortcut" ondblclick="taskClick(document.getElementById('task-profile'), 'page-profile')">
-                <img src="../../ui/shortcut_icons/profile.png" alt="profile-icon">
+                <img src="../../ui/shortcut_icons/profile.png" alt="profile icon">
                 <p>PROFILE</p>
             </div>  
-            <div class="shortcut" ondblclick="openHome()">
-                <img src="../../ui/shortcut_icons/home.png" alt="profile-icon">
+            <div class="shortcut" ondblclick="taskClick(document.getElementById('task-home'), 'page-home')">
+                <img src="../../ui/shortcut_icons/home.png" alt="profile icon">
                 <p>HOME</p>
             </div>
         </div>
         <!-- -------------------------------- PAGES -------------------------------- -->
-        <div class="page resizable hide" id="page-profile">
+        <div class="page resizable hide" id="page-profile"> <!-- PROFILE PAGE -->
             <div id="page-profile-header" class="page-header unselectable">
+                <p>PROFILE</p>
                 <img src="../../ui/window/minimize.png" alt="minimize-window" onclick="taskClick(document.getElementById('task-profile'), 'page-profile')">
                 <img src="../../ui/window/full.png" alt="fullscreen" onclick="fullscreenWindow(this.parentElement.parentElement)">
                 <img src="../../ui/window/close.png" alt="close-window" onclick="closeWindow(document.getElementById('task-profile'), this.parentElement.parentElement)">
@@ -51,9 +58,9 @@
             <div class="profile-content">
                 <div class="profile-header">
                     <img src="../../test/profile.png" alt="profile-picture">
-                    <img src="../../ui/misc/edit_icon_nobg.png" alt="edit-button">
+                    <img src="../../ui/misc/edit_icon_nobg.png" alt="edit button">
                     <p class="profile-name">PROFILE NAME</p>
-                    <img src="../../ui/misc/edit_icon_nobg.png" alt="edit-button">
+                    <img src="../../ui/misc/edit_icon_nobg.png" alt="edit button">
                 </div>
                 <div class="break-line"></div>
                 <p class="profile-bio">test bio for test profile</p>
@@ -61,6 +68,14 @@
                 <div class="profile-posts">
 
                 </div>
+            </div>
+        </div>
+        <div class="page resizable hide" id="page-home">
+            <div id="page-home-header" class="page-header unselectable">
+                <p>HOME</p>
+                <img src="../../ui/window/minimize.png" alt="minimize-window" onclick="taskClick(document.getElementById('task-home'), 'page-home')">
+                <img src="../../ui/window/full.png" alt="fullscreen" onclick="fullscreenWindow(this.parentElement.parentElement)">
+                <img src="../../ui/window/close.png" alt="close-window" onclick="closeWindow(document.getElementById('task-home'), this.parentElement.parentElement)">
             </div>
         </div>
     </section>

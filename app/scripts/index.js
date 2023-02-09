@@ -2,6 +2,7 @@
 function init() {
     generateTaskbar()
     dragElement(document.getElementById('page-profile'))
+    dragElement(document.getElementById('page-home'))
     initInteractJS()
     initEventListeners()
 }
@@ -46,7 +47,7 @@ function initInteractJS() {
                 Object.assign(event.target.style, {
                     width: `${event.rect.width}px`,
                     height: `${event.rect.height}px`,
-                    transform: `translate(${x}px, ${y}px)`
+                    // transform: `translate(${x}px, ${y}px)`
                 })
     
                 Object.assign(event.target.dataset, { x, y })
@@ -62,19 +63,19 @@ function taskClick(e, selector) {
     document.getElementById(selector).classList.toggle('hide')
     console.log(document.getElementById(selector).children);
     console.log(e.children[0].getAttribute('src'));
-    if (e.children[0].getAttribute('src') === '../../ui/task_bar/tasks/profile/index.png') {
-        e.children[0].setAttribute('src', '../../ui/task_bar/tasks/profile/pressed.png')
+    if (e.children[0].getAttribute('src') === `../../ui/task_bar/tasks/${selector.replace('page-', '')}/index.png`) {
+        e.children[0].setAttribute('src', `../../ui/task_bar/tasks/${selector.replace('page-', '')}/pressed.png`)
     } else {
-        e.children[0].setAttribute('src', '../../ui/task_bar/tasks/profile/index.png')
+        e.children[0].setAttribute('src', `../../ui/task_bar/tasks/${selector.replace('page-', '')}/index.png`)
     }
 }
 
 function generateTaskbar() {
     document.getElementById('taskbar-middle').style.width = `${document.body.clientWidth - 20}px`
     document.getElementById('taskbar-icons').style.width = `${document.body.clientWidth - 20}px`
-    document.getElementById('time').innerHTML = `${Math.abs(new Date().getHours() - 12)}:${new Date().getMinutes()}`
+    document.getElementById('time').innerHTML = `${Math.abs((new Date().getHours() !== 12) ? new Date().getHours() - 12 : new Date().getHours())}:${(new Date().getMinutes() < 10) ? '0' + new Date().getMinutes() : new Date().getMinutes()}`
     setInterval(() => {
-        document.getElementById('time').innerHTML = `${Math.abs(new Date().getHours() - 12)}:${new Date().getMinutes()}`
+        document.getElementById('time').innerHTML = `${Math.abs((new Date().getHours() !== 12) ? new Date().getHours() - 12 : new Date().getHours())}:${(new Date().getMinutes() < 10) ? '0' + new Date().getMinutes() : new Date().getMinutes()}`
         console.log('Updated Time');
     }, 5000);
 }
@@ -83,8 +84,10 @@ function initEventListeners() {
     document.getElementById('start-button').addEventListener('click', e => { // start button click even listener
         if (document.getElementById('start-button').getAttribute('src') === '../../ui/task_bar/start/index.png') {
             document.getElementById('start-button').setAttribute('src', '../../ui/task_bar/start/pressed.png')
+            document.getElementById('start-container').classList.toggle('hide')
         } else {
             document.getElementById('start-button').setAttribute('src', '../../ui/task_bar/start/index.png')
+            document.getElementById('start-container').classList.toggle('hide')
         }
     })
 }
@@ -95,10 +98,15 @@ function closeWindow(task, window) {
 }
 
 function fullscreenWindow(e) {
-    e.style.top = 0
-    e.style.left = 0
-    e.style.width = '100vw'
-    e.style.height = 'calc(100vh - 65px)'
+    if (e.style.width === '100vw' && e.style.height === 'calc(100vh - 65px)') {
+        e.style.width = '500px'
+        e.style.height = '600px'
+    } else {
+        e.style.top = 0
+        e.style.left = 0
+        e.style.width = '100vw'
+        e.style.height = 'calc(100vh - 65px)'
+    }
 }
 
 init()
