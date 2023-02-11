@@ -44,7 +44,7 @@ exports.login = async (req, res) => {
           //     httpOnly: true
           // }
           // res.cookie('jwt', token, cookieOptions);
-          res.status(200).redirect("../app/html/index.html");
+          res.status(200).redirect("/");
         }
       }
     );
@@ -89,9 +89,7 @@ exports.register = (req, res) => {
             console.log(error);
           } else {
             console.log(results);
-            return res.render("register", {
-              message: "User registered!",
-            });
+            return res.render("login");
           }
         }
       );
