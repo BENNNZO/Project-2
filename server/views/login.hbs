@@ -37,13 +37,15 @@
         </h4>
       {{/if}}
       <form class="login-form" action="/auth/login" method="POST">
-        <input type="email" name="email" placeholder="Email" />
-        <input type="password" name="password" placeholder="Password" />
-        <button type="submit" class="btn btn-prim">Log In</button>
-        <div class="separationLine">
+          <p class="descriptions">Email</p>
+            <input type="email" name="email" placeholder="Email">
+            <p class="descriptions">Password</p>
+            <input type="password" placeholder="Password">
+            <button type="submit" class="btn btn-prim">Log In</button>
+            <div class="separationLine">
           <div class="or">----- OR -----</div>
         </div>
-        <button id="googleTest">Register</button>
+         <a href="/register" class="register-button">Register</a>
       </form>
     </div>
     <section>

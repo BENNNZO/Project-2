@@ -19,6 +19,32 @@ body {
     margin-bottom: 40px;
     padding-right: 100px;
   }
+
+  .descriptions{
+    color: black;
+    padding-bottom: 0;
+    font-size: 16px;
+  }
+
+  .register-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #09760b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 15px;
+    text-decoration: none;
+    
+  }
+  
+  .register-button:hover {
+    background-color: #247c2c;
+    box-shadow: 1px 1px 0px 1px #000;
+    text-shadow: none;
+  }
   
   .login-form {
     background: linear-gradient(#2B90FF, #0055EA, #026AFE);
