@@ -1,15 +1,12 @@
 /* ----------------------------- INNIT FUNCTION ----------------------------- */
 function init() {
-    // if (getCookie('logged_in') === '1') {
-        profileFetch()
-        generateTaskbar()
-        dragElement(document.getElementById('page-profile'))
-        dragElement(document.getElementById('page-home'))
-        initInteractJS()
-        initEventListeners()
-    // } else {
-
-    // }
+    profileFetch()
+    generateTaskbar()
+    dragElement(document.getElementById('page-profile'))
+    dragElement(document.getElementById('page-home'))
+    dragElement(document.getElementById('edit-profile'))
+    initInteractJS()
+    initEventListeners()
 }
 
 /* -------------------------- DRAG ELEMENT FUNCTION ------------------------- */
@@ -96,10 +93,42 @@ function initEventListeners() {
         }
     })
     document.getElementById('edit-button').addEventListener('click', e => {
+        document.getElementById('edit-profile').classList.remove('hide')
+    })
+    document.getElementById('submit-profile-edit').addEventListener('click', e => {
+        if (document.getElementById('edit-profile-name').value != '') { // update profile name if exists
+            fetch(`/update/${getCookie('user_id')}`, {
+                method: 'PUT',
+                headers: { 'Content-type': 'application/json' },
+                body: JSON.stringify({ name: document.getElementById('edit-profile-name').value })
+            })
+            .then(res => {
+                document.getElementById('profile-name').innerHTML = decodeURI(getCookie('username')).toUpperCase()
+                res.json(res)
+            })
+            .catch(err => {
+                console.log(err);
+            })
+        } else if (document.getElementById('edit-profile-bio').value != '') { // update profile bio if exists
+            fetch(`/update/${getCookie('user_id')}`, {
+                method: 'PUT',
+                headers: { 'Content-type': 'application/json' },
+                body: JSON.stringify({ bio: document.getElementById('edit-profile-bio').value })
+            })
+            .then(res => {
+                document.getElementById('profile-bio').innerHTML = decodeURI(getCookie('bio')).toUpperCase()
+                res.json(res)
+            })
+            .catch(err => {
+                console.log(err);
+            })
 
+        }
+        console.log('test');
     })
     document.getElementById('logout-button').addEventListener('click', e => {
-        
+        document.cookie = '' 
+        window.location.href = "/login";
     })
 }
 
@@ -120,16 +149,14 @@ function fullscreenWindow(e) {
     }
 }
 
-/* ------------------------------- FETCH CALLS ------------------------------ */
-function profileFetch() {
-    document.getElementById('profile-name').innerHTML = getCookie('username').toUpperCase()
-}
-
-/* ---------------------------------- MISC ---------------------------------- */
 function getCookie(name) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
     if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
+function profileFetch() {
+    document.getElementById('profile-name').innerHTML = getCookie('username').toUpperCase()
 }
 
 /* ---------------------------------- INNIT --------------------------------- */

@@ -1,7 +1,6 @@
 const mysql = require("mysql2");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-const cookieParser = require('cookie-parser');
 
 const db = mysql.createConnection(process.env.MYSQL_URI);
 
@@ -33,22 +32,8 @@ exports.login = async (req, res) => {
             message: "Incorrect email or password",
           });
         } else {
-          // const id = results[0].id;
-          // const token = jwt.sign({ id}, process.env.JWT_SECRET, {
-          //     expiresIn: process.env.JWT_EXPIRES_IN
-          // });
-          // console.log("token is: " + token);
-          // const cookieOptions = {
-          //     expires: new Date() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000,
-          //     httpOnly: true
-          // }
-          // res.cookie('jwt', token, cookieOptions);
-          console.log(results);
-          console.log('results');
-          // const d = new Date();
-          // d.setTime(d.getTime() + (10 * 24 * 60 * 60 * 1000));
-          // document.cookie = `username=${results.name};`
           res.cookie('username', results[0].name)
+          res.cookie('user_id', results[0].id)
           res.cookie('logged_in', '1')
           res.status(200).redirect("/");
         }

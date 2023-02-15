@@ -34,6 +34,7 @@ Users.init(
     bio: {
       type: DataTypes.STRING,
       allowNull: true,
+      defaultValue: "BIO"
     },
   },
   {

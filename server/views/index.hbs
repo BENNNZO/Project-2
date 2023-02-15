@@ -76,11 +76,16 @@
         </div>
       </div>
 
-      <div class="edit-box">
-        <p>PROFILE NAME:</p>
-        <textarea name="profile-name" placeholder="PROFILE NAME" id="edit-profile-name"></textarea>
-        <p>BIO:</p>
-        <textarea name="profile-name" placeholder="BIO" id="edit-profile-bio"></textarea>
+      <div class="edit-profile unselectable page" id="edit-profile">
+        <div class="page-header unselectable" id="edit-profile-header">
+          <p>EDIT PROFILE:</p>
+          <img src="/ui/window/close.png" alt="close-window" onclick="this.parentElement.parentElement.classList.add('hide')" />
+        </div>
+        <label for="profile-name">PROFILE NAME:</label>
+        <textarea name="profile-name" placeholder="PROFILE NAME" id="edit-profile-name" rows="1" maxlength="15"></textarea>
+        <label for="profile-bio">BIO:</label>
+        <textarea name="profile-bio" placeholder="BIO" id="edit-profile-bio" rows="6" maxlength="100"></textarea>
+        <input type="submit" id="submit-profile-edit">SAVE</input>
       </div>
     </section>
     <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.js"></script>
