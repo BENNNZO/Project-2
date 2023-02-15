@@ -52,19 +52,20 @@
           <p>PROFILE</p>
           <img src="/ui/window/minimize.png" alt="minimize-window" onclick="taskClick(document.getElementById('task-profile'), 'page-profile')" />
           <img src="/ui/window/full.png" alt="fullscreen" onclick="fullscreenWindow(this.parentElement.parentElement)" />
-          <img src="/ui/window/close.png" alt="close-window" onclick="closeWindow(document.getElementById('task-profile'), this.parentElement.parentElement)" />
+          <img src="/ui/window/close.png" alt="close-window" onclick="closeWindow(document.getElementById('task-profile'), this.parentElement.parentElement, 'profile')" />
         </div>
         <div class="profile-content">
           <div class="profile-header">
             {{!-- <img src="/test/profile.png" alt="profile-picture" />
             <img src="/ui/misc/edit_icon_nobg.png" alt="edit button" /> --}}
             <p class="profile-name" id="profile-name">PROFILE NAME</p>
-            <img src="/ui/misc/edit_icon_nobg.png" alt="edit button" id="edit-button"/>
+            <div class="options">
+              <img src="/ui/misc/edit_icon.png" alt="edit button" id="edit-button"/>
+              <img src="/ui/misc/post_icon.png" alt="post button" id="post-button"/>
+            </div>
           </div>
-          <p class="profile-bio">test bio for test profile</p>
-          <div class="profile-posts">
-
-          </div>
+          <p class="profile-bio" id="profile-bio">test bio for test profile</p>
+          <div class="profile-posts" id="profile-posts"></div>
         </div>
       </div>
       <div class="page resizable hide" id="page-home">
@@ -72,11 +73,12 @@
           <p>HOME</p>
           <img src="/ui/window/minimize.png" alt="minimize-window" onclick="taskClick(document.getElementById('task-home'), 'page-home')" />
           <img src="/ui/window/full.png" alt="fullscreen" onclick="fullscreenWindow(this.parentElement.parentElement)" />
-          <img src="/ui/window/close.png" alt="close-window" onclick="closeWindow(document.getElementById('task-home'), this.parentElement.parentElement)" />
+          <img src="/ui/window/close.png" alt="close-window" onclick="closeWindow(document.getElementById('task-home'), this.parentElement.parentElement, 'home')" />
         </div>
+        <div class="home-profile-posts" id="home-profile-posts"></div>
       </div>
 
-      <div class="edit-profile unselectable page" id="edit-profile">
+      <div class="edit-profile unselectable page hide" id="edit-profile">
         <div class="page-header unselectable" id="edit-profile-header">
           <p>EDIT PROFILE:</p>
           <img src="/ui/window/close.png" alt="close-window" onclick="this.parentElement.parentElement.classList.add('hide')" />
@@ -84,10 +86,21 @@
         <label for="profile-name">PROFILE NAME:</label>
         <textarea name="profile-name" placeholder="PROFILE NAME" id="edit-profile-name" rows="1" maxlength="15"></textarea>
         <label for="profile-bio">BIO:</label>
-        <textarea name="profile-bio" placeholder="BIO" id="edit-profile-bio" rows="6" maxlength="100"></textarea>
-        <input type="submit" id="submit-profile-edit">SAVE</input>
+        <textarea name="profile-bio" placeholder="BIO" id="edit-profile-bio" rows="8" maxlength="100"></textarea>
+        <input type="submit" id="submit-profile-edit" value="SAVE"></input>
       </div>
+
+      {{!-- <div class="add-post unselectable page" id="add-post">
+        <div class="page-header unselectable" id="add-post-header">
+          <p>EDIT PROFILE:</p>
+          <img src="/ui/window/close.png" alt="close-window" onclick="this.parentElement.parentElement.classList.add('hide')" />
+        </div>
+        <label for="post-content">NEW POST:</label>
+        <textarea name="post-content" placeholder="TEXT" id="post-content" rows="8" maxlength="100"></textarea>
+        <input type="submit" id="submit-new-post" value="POST"></input>
+      </div> --}}
     </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.js"></script>
     <script src="/app/scripts/index.js"></script>
   </body>

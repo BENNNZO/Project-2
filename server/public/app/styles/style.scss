@@ -199,12 +199,11 @@ body {
     align-items: center;
     gap: 10px;
     img {
-        margin-left: auto;
-        padding: 10px;
         height: 45px;
         width: 45px;
-        box-shadow: inset 0px -5px $darkgrey, inset -5px 0px $darkgrey, inset 5px 0px white, inset 0px 5px white;
-        background-color: hsl(0%, 0%, 80%);
+    }
+    .options {
+        margin-left: auto;
     }
     .profile-name {
         padding: 5px;
@@ -220,17 +219,34 @@ body {
 }
 
 .profile-bio {   
+    width: 100%;
     padding: 10px;
     margin: 10px 0; 
     box-shadow: inset 0px -5px $darkgrey, inset -5px 0px $darkgrey, inset 5px 0px white, inset 0px 5px white;
     background-color: hsl(0%, 0%, 80%);
-    font-size: 2.5rem;
+    font-size: 2rem;
+}
+
+.post {
+    padding: 10px;
+    margin: 10px 0;
+    box-shadow: inset 0px -5px $darkgrey, inset -5px 0px $darkgrey, inset 5px 0px white, inset 0px 5px white;
+    background-color: hsl(0%, 0%, 80%);
+    .text {
+        font-size: 1.5rem;
+    }
+    .data {
+        font-size: 1rem; 
+        color: rgb(75, 75, 75);
+    }
 }
 
 /* -------------------------------- EDIT BOX -------------------------------- */
 .edit-profile {
     height: auto;
     min-height: auto !important;
+    min-width: 350px !important;
+    max-width: 350px !important;
     p, textarea, button {
         padding: 0 5px;
     }
@@ -250,6 +266,14 @@ body {
         width: calc(100% - 10px);
         border: 5px solid $darkgrey;
         margin: 0 5px;
+    }
+    #submit-profile-edit {
+        padding: 10px;
+        padding-right: 5px;
+        margin: 5px;
+        border: none;
+        box-shadow: inset 0px -5px $darkgrey, inset -5px 0px $darkgrey, inset 5px 0px white, inset 0px 5px white;
+        background-color: hsl(0%, 0%, 80%);
     }
 }
 

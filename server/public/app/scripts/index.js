@@ -1,10 +1,12 @@
 /* ----------------------------- INNIT FUNCTION ----------------------------- */
 function init() {
     profileFetch()
+    homeFetch()
     generateTaskbar()
     dragElement(document.getElementById('page-profile'))
     dragElement(document.getElementById('page-home'))
     dragElement(document.getElementById('edit-profile'))
+    // dragElement(document.getElementById('add-post'))
     initInteractJS()
     initEventListeners()
 }
@@ -109,14 +111,15 @@ function initEventListeners() {
             .catch(err => {
                 console.log(err);
             })
-        } else if (document.getElementById('edit-profile-bio').value != '') { // update profile bio if exists
+        }
+        if (document.getElementById('edit-profile-bio').value != '') { // update profile bio if exists
             fetch(`/update/${getCookie('user_id')}`, {
                 method: 'PUT',
                 headers: { 'Content-type': 'application/json' },
                 body: JSON.stringify({ bio: document.getElementById('edit-profile-bio').value })
             })
             .then(res => {
-                document.getElementById('profile-bio').innerHTML = decodeURI(getCookie('bio')).toUpperCase()
+                document.getElementById('profile-bio').innerHTML = decodeURI(getCookie('bio'))
                 res.json(res)
             })
             .catch(err => {
@@ -124,7 +127,6 @@ function initEventListeners() {
             })
 
         }
-        console.log('test');
     })
     document.getElementById('logout-button').addEventListener('click', e => {
         document.cookie = '' 
@@ -132,9 +134,10 @@ function initEventListeners() {
     })
 }
 
-function closeWindow(task, window) {
+function closeWindow(task, window, selector) {
     task.classList.add('hide')
     window.classList.add('hide')
+    task.children[0].setAttribute('src', `../../ui/task_bar/tasks/${selector}/index.png`)
 }
 
 function fullscreenWindow(e) {
@@ -156,8 +159,42 @@ function getCookie(name) {
 }
 
 function profileFetch() {
-    document.getElementById('profile-name').innerHTML = getCookie('username').toUpperCase()
+    document.getElementById('profile-name').innerHTML = decodeURI(getCookie('username')).toUpperCase()
+    document.getElementById('profile-bio').innerHTML = decodeURI(getCookie('bio'))
+    fetch(`/users/${getCookie('user_id')}`)
+    .then(data => data.json())
+    .then(data => {
+        data.comments.forEach(e => {
+            document.getElementById('profile-posts').innerHTML = `
+                ${document.getElementById('profile-posts').innerHTML}
+                <div class="post">
+                    <p class="text">${e.comment}</p>
+                    <p class="data">${new Date(e.createdAt).getMonth()}/${new Date(e.createdAt).getDay()}/${new Date(e.createdAt).getFullYear()}</p>
+                </div>
+            `
+        });
+    })
+    .catch(err => console.log(err))
+    document.getElementById('page-profile').style.width = '500px'
 }
+
+function homeFetch() {
+    fetch('/comment')
+    .then(data => data.json())
+    .then(data => {
+        data.forEach(e => {
+            document.getElementById('home-profile-posts').innerHTML = `
+                ${document.getElementById('home-profile-posts').innerHTML}
+                <div class="post" style="margin: 5px">
+                    <p class="data">${e.user.name.toUpperCase()}</p>
+                    <p class="text">${e.comment}</p>
+                    <p class="data">${new Date(e.createdAt).getMonth()}/${new Date(e.createdAt).getDay()}/${new Date(e.createdAt).getFullYear()}</p>
+                </div>
+            `
+        });
+        console.log(data);
+    })
+} 
 
 /* ---------------------------------- INNIT --------------------------------- */
 init()

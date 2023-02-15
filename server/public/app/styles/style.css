@@ -192,12 +192,11 @@ body {
   gap: 10px;
 }
 .profile-header img {
-  margin-left: auto;
-  padding: 10px;
   height: 45px;
   width: 45px;
-  box-shadow: inset 0px -5px hsl(0deg, 0%, 47%), inset -5px 0px hsl(0deg, 0%, 47%), inset 5px 0px white, inset 0px 5px white;
-  background-color: hsl(0deg, 0%, 80%);
+}
+.profile-header .options {
+  margin-left: auto;
 }
 .profile-header .profile-name {
   padding: 5px;
@@ -212,17 +211,34 @@ body {
 }
 
 .profile-bio {
+  width: 100%;
   padding: 10px;
   margin: 10px 0;
   box-shadow: inset 0px -5px hsl(0deg, 0%, 47%), inset -5px 0px hsl(0deg, 0%, 47%), inset 5px 0px white, inset 0px 5px white;
   background-color: hsl(0deg, 0%, 80%);
-  font-size: 2.5rem;
+  font-size: 2rem;
+}
+
+.post {
+  padding: 10px;
+  margin: 10px 0;
+  box-shadow: inset 0px -5px hsl(0deg, 0%, 47%), inset -5px 0px hsl(0deg, 0%, 47%), inset 5px 0px white, inset 0px 5px white;
+  background-color: hsl(0deg, 0%, 80%);
+}
+.post .text {
+  font-size: 1.5rem;
+}
+.post .data {
+  font-size: 1rem;
+  color: rgb(75, 75, 75);
 }
 
 /* -------------------------------- EDIT BOX -------------------------------- */
 .edit-profile {
   height: auto;
   min-height: auto !important;
+  min-width: 350px !important;
+  max-width: 350px !important;
 }
 .edit-profile p, .edit-profile textarea, .edit-profile button {
   padding: 0 5px;
@@ -242,6 +258,14 @@ body {
   width: calc(100% - 10px);
   border: 5px solid hsl(0deg, 0%, 47%);
   margin: 0 5px;
+}
+.edit-profile #submit-profile-edit {
+  padding: 10px;
+  padding-right: 5px;
+  margin: 5px;
+  border: none;
+  box-shadow: inset 0px -5px hsl(0deg, 0%, 47%), inset -5px 0px hsl(0deg, 0%, 47%), inset 5px 0px white, inset 0px 5px white;
+  background-color: hsl(0deg, 0%, 80%);
 }
 
 /* ---------------------------------- MISC ---------------------------------- *//*# sourceMappingURL=style.css.map */

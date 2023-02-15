@@ -33,6 +33,7 @@ exports.login = async (req, res) => {
           });
         } else {
           res.cookie('username', results[0].name)
+          res.cookie('bio', results[0].bio)
           res.cookie('user_id', results[0].id)
           res.cookie('logged_in', '1')
           res.status(200).redirect("/");

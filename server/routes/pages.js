@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { Users } = require('../models')
+const { Users, Comments } = require('../models')
 
 router.get("/", (req, res) => {
   if (req.cookies.logged_in === '1') {
@@ -30,9 +30,39 @@ router.put("/update/:id", (req, res) => {
   }
   if (req.body.bio) {
     Users.update({ bio: req.body.bio },{ where: { id: req.params.id }})
-    .then(updatedData => res.json(updatedData))
+    .then(updatedData => {
+      res.cookie('bio', req.body.bio)
+      res.json(updatedData)
+    })
     .catch(err => console.log(err))
   }
+})
+
+router.get("/users/:id", (req, res) => {
+  Users.findByPk(req.params.id, {
+    include: { model: Comments }
+  })
+  .then(data => {
+    res.json(data)
+  })
+  .catch(err => console.log(err))
+})
+
+router.post("/comment", (req, res) => {
+  Comments.create({
+    comment: req.body.comment,
+    user_id: req.body.user_id
+  })
+  .then(comment => res.json(comment))
+  .catch(err => console.log(err))
+})
+
+router.get("/comment", (req, res) => {
+  Comments.findAll({
+    include: { model: Users}
+  })
+  .then(data => res.json(data))
+  .catch(err => console.log(err))
 })
 
 module.exports = router;
