@@ -1,10 +1,15 @@
 /* ----------------------------- INNIT FUNCTION ----------------------------- */
 function init() {
-    generateTaskbar()
-    dragElement(document.getElementById('page-profile'))
-    dragElement(document.getElementById('page-home'))
-    initInteractJS()
-    initEventListeners()
+    // if (getCookie('logged_in') === '1') {
+        profileFetch()
+        generateTaskbar()
+        dragElement(document.getElementById('page-profile'))
+        dragElement(document.getElementById('page-home'))
+        initInteractJS()
+        initEventListeners()
+    // } else {
+
+    // }
 }
 
 /* -------------------------- DRAG ELEMENT FUNCTION ------------------------- */
@@ -90,6 +95,12 @@ function initEventListeners() {
             document.getElementById('start-container').classList.toggle('hide')
         }
     })
+    document.getElementById('edit-button').addEventListener('click', e => {
+
+    })
+    document.getElementById('logout-button').addEventListener('click', e => {
+        
+    })
 }
 
 function closeWindow(task, window) {
@@ -109,4 +120,17 @@ function fullscreenWindow(e) {
     }
 }
 
+/* ------------------------------- FETCH CALLS ------------------------------ */
+function profileFetch() {
+    document.getElementById('profile-name').innerHTML = getCookie('username').toUpperCase()
+}
+
+/* ---------------------------------- MISC ---------------------------------- */
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
+/* ---------------------------------- INNIT --------------------------------- */
 init()

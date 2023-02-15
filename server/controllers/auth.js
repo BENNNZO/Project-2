@@ -1,6 +1,7 @@
 const mysql = require("mysql2");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
+const cookieParser = require('cookie-parser');
 
 const db = mysql.createConnection(process.env.MYSQL_URI);
 
@@ -38,12 +39,17 @@ exports.login = async (req, res) => {
           // });
           // console.log("token is: " + token);
           // const cookieOptions = {
-          //     expires: new Date(
-          //         Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000
-          //     ),
+          //     expires: new Date() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000,
           //     httpOnly: true
           // }
           // res.cookie('jwt', token, cookieOptions);
+          console.log(results);
+          console.log('results');
+          // const d = new Date();
+          // d.setTime(d.getTime() + (10 * 24 * 60 * 60 * 1000));
+          // document.cookie = `username=${results.name};`
+          res.cookie('username', results[0].name)
+          res.cookie('logged_in', '1')
           res.status(200).redirect("/");
         }
       }

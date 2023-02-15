@@ -1,3 +1,4 @@
+const cookieParser = require("cookie-parser");
 const express = require("express");
 const path = require("path");
 // const mysql = require('mysql')
@@ -25,6 +26,8 @@ app.use(express.urlencoded({ extended: true }));
 
 app.set("views", path.join(__dirname, "./views"), "views");
 app.set("view engine", "hbs");
+
+app.use(cookieParser())
 
 // db.connect( (error) => {
 //     if(error){
