@@ -1,7 +1,7 @@
 const mysql = require("mysql2");
 const bcrypt = require("bcryptjs");
 
-const db = mysql.createConnection(process.env.JAWSDB_URL);
+const db = mysql.createConnection(process.env.MYSQL_URI);
 
 exports.login = async (req, res) => {
   try {

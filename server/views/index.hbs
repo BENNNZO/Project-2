@@ -90,15 +90,17 @@
         <input type="submit" id="submit-profile-edit" value="SAVE"></input>
       </div>
 
-      {{!-- <div class="add-post unselectable page" id="add-post">
+      <div class="unselectable page add-post" id="add-post">
         <div class="page-header unselectable" id="add-post-header">
           <p>EDIT PROFILE:</p>
           <img src="/ui/window/close.png" alt="close-window" onclick="this.parentElement.parentElement.classList.add('hide')" />
         </div>
-        <label for="post-content">NEW POST:</label>
-        <textarea name="post-content" placeholder="TEXT" id="post-content" rows="8" maxlength="100"></textarea>
-        <input type="submit" id="submit-new-post" value="POST"></input>
-      </div> --}}
+        <div class="add-post-page-content">
+          <label for="post-content">NEW POST:</label>
+          <textarea name="post-content" placeholder="TEXT" id="post-content" rows="8" maxlength="150"></textarea>
+          <input type="submit" id="submit-new-post" value="POST"></input>
+        </div>
+      </div>
     </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.js"></script>

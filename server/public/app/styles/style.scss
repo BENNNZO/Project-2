@@ -277,4 +277,33 @@ body {
     }
 }
 
+/* ---------------------------- ADD POST SECTION ---------------------------- */
+.add-post {
+    height: auto;
+    min-height: auto !important;
+}
+.add-post-page-content {
+    display: flex;
+    flex-direction: column;
+    label {
+        font-size: 2.5rem;
+        padding-left: 5px;
+    }
+    textarea {
+        border: 5px solid $darkgrey;
+        margin: 0px 5px;
+        padding: 5px;
+        font-size: 1.5rem;
+        resize: none;
+    }
+    input {
+        font-size: 2.5rem;
+        margin: 5px;
+        padding: 5px;
+        border: none;
+        box-shadow: inset 0px -5px $darkgrey, inset -5px 0px $darkgrey, inset 5px 0px white, inset 0px 5px white;
+        background-color: hsl(0%, 0%, 80%);
+    }
+}
+
 /* ---------------------------------- MISC ---------------------------------- */

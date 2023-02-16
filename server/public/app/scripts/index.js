@@ -1,6 +1,4 @@
 /* ----------------------------- INNIT FUNCTION ----------------------------- */
-let asdasd = 0
-
 function init() {
     profileFetch()
     homeFetch()
@@ -8,9 +6,12 @@ function init() {
     dragElement(document.getElementById('page-profile'))
     dragElement(document.getElementById('page-home'))
     dragElement(document.getElementById('edit-profile'))
-    // dragElement(document.getElementById('add-post'))
+    dragElement(document.getElementById('add-post'))
     initInteractJS()
     initEventListeners()
+    setInterval(() => {
+        homeFetch()
+    }, 500);
 }
 
 /* -------------------------- DRAG ELEMENT FUNCTION ------------------------- */
@@ -87,6 +88,7 @@ function generateTaskbar() {
 }
 
 function initEventListeners() {
+    /* ------------------------------ START BUTTON ------------------------------ */
     document.getElementById('start-button').addEventListener('click', e => { // start button click even listener
         if (document.getElementById('start-button').getAttribute('src') === '../../ui/task_bar/start/index.png') {
             document.getElementById('start-button').setAttribute('src', '../../ui/task_bar/start/pressed.png')
@@ -96,9 +98,13 @@ function initEventListeners() {
             document.getElementById('start-container').classList.toggle('hide')
         }
     })
+
+    /* ------------------------------- EDIT BUTTON ------------------------------ */
     document.getElementById('edit-button').addEventListener('click', e => {
         document.getElementById('edit-profile').classList.remove('hide')
     })
+
+    /* --------------------------- SUBMIT PROFILE EDIT -------------------------- */
     document.getElementById('submit-profile-edit').addEventListener('click', e => {
         if (document.getElementById('edit-profile-name').value != '') { // update profile name if exists
             fetch(`/update/${getCookie('user_id')}`, {
@@ -120,9 +126,9 @@ function initEventListeners() {
                 headers: { 'Content-type': 'application/json' },
                 body: JSON.stringify({ bio: document.getElementById('edit-profile-bio').value })
             })
-            .then(res => {
+            .then(data => {
                 document.getElementById('profile-bio').innerHTML = decodeURI(getCookie('bio'))
-                res.json(res)
+                res.json(data)
             })
             .catch(err => {
                 console.log(err);
@@ -130,9 +136,31 @@ function initEventListeners() {
 
         }
     })
+
+    /* ------------------------------ LOGOUT BUTTON ----------------------------- */
     document.getElementById('logout-button').addEventListener('click', e => {
         document.cookie = '' 
         window.location.href = "/login";
+    })
+
+    /* ------------------------- SUBMIT NEW POST BUTTON ------------------------- */
+    document.getElementById('submit-new-post').addEventListener('click', e => {
+        fetch('/comment', {
+            method: 'POST',
+            headers: { 'Content-type': 'application/json' },
+            body: JSON.stringify({
+                comment: document.getElementById('post-content').value,
+                user_id: getCookie('user_id')
+            })
+        })
+        .then(data => {
+            homeFetch()
+            profileFetch()
+            res.json(data)
+        })
+        .catch(err => {
+            console.log(err);
+        })
     })
 }
 
@@ -166,6 +194,7 @@ function profileFetch() {
     fetch(`/users/${getCookie('user_id')}`)
     .then(data => data.json())
     .then(data => {
+        document.getElementById('profile-posts').innerHTML = ''
         data.comments.forEach(e => {
             document.getElementById('profile-posts').innerHTML = `
                 ${document.getElementById('profile-posts').innerHTML}
@@ -184,6 +213,7 @@ function homeFetch() {
     fetch('/comment')
     .then(data => data.json())
     .then(data => {
+        document.getElementById('home-profile-posts').innerHTML = ''
         data.forEach(e => {
             document.getElementById('home-profile-posts').innerHTML = `
                 ${document.getElementById('home-profile-posts').innerHTML}
