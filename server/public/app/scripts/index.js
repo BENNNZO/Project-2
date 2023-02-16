@@ -104,6 +104,11 @@ function initEventListeners() {
         document.getElementById('edit-profile').classList.remove('hide')
     })
 
+    /* ----------------------------- NEW POST BUTTON ---------------------------- */
+    document.getElementById('post-button').addEventListener('click', e => {
+        document.getElementById('add-post').classList.remove('hide')
+    })
+
     /* --------------------------- SUBMIT PROFILE EDIT -------------------------- */
     document.getElementById('submit-profile-edit').addEventListener('click', e => {
         if (document.getElementById('edit-profile-name').value != '') { // update profile name if exists
