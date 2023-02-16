@@ -1,105 +1,131 @@
 
 body {
-    background: linear-gradient(to left,#6286E1, #6286E1 , #9FBBF6, #7899E9);
-   overflow: hidden;
+  background: linear-gradient(to left,#6286E1, #6286E1 , #9FBBF6, #7899E9);
+ overflow: hidden;
 
-  }
-  
+}
 
-  .container {
-    width: 550px;
-    margin: 0 auto;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .header {
-    margin-bottom: 40px;
-    padding-right: 100px;
-  }
-  
-  .login-form {
-    background: linear-gradient(#2B90FF, #0055EA, #026AFE);
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px #6286E1;
-  }
-  
-  .login-form input[type="text"],
-  .login-form input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-  }
-  
-  .login-form input[type="submit"] {
-    width: 100%;
-    padding: 10px;
-    background-color: #247e2e;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-  }
- .separationLine{
-    padding: 10px;
-    
- }
 
- .waveBottom {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    line-height: 0;
+.container {
+  width: 550px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  height: 100vh;
+}
+
+.header {
+  margin-bottom: 40px;
+  padding-right: 100px;
+}
+
+.descriptions{
+  color: black;
+  padding-bottom: 0;
+  font-size: 16px;
+}
+
+.register-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #09760b;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 15px;
+  text-decoration: none;
+  
+}
+
+.register-button:hover {
+  background-color: #247c2c;
+  box-shadow: 1px 1px 0px 1px #000;
+  text-shadow: none;
+}
+
+.login-form {
+  background: linear-gradient(#2B90FF, #0055EA, #026AFE);
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #6286E1;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.login-form input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #247e2e;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.separationLine{
+  padding: 10px;
+  
+}
+
+.waveBottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
 }
 
 .waveBottom svg {
-    position: relative;
-    display: block;
-    width: calc(164% + 1.3px);
-    height: 246px;
+  position: relative;
+  display: block;
+  width: calc(164% + 1.3px);
+  height: 246px;
 }
 
 .waveBottom .shape-fill {
-    fill: #2231A8;
+  fill: #2231A8;
 }
 
 .waveTop {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    line-height: 0;
-    transform: rotate(180deg);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
 }
 
 .waveTop svg {
-    position: relative;
-    display: block;
-    width: calc(150% + 1.3px);
-    height: 172px;
+  position: relative;
+  display: block;
+  width: calc(150% + 1.3px);
+  height: 172px;
 }
 
 .waveTop .shape-fill {
-    fill: #2231A8;
+  fill: #2231A8;
 }
 .newUser{
-  text-decoration: none;
+text-decoration: none;
 }
 
 input[type="email"] {
-  width: 100%;
-  height: 30px;
-  margin-bottom: 18px;
-  border-radius: 5px;
-  font-size: 15px;
+width: 100%;
+height: 30px;
+margin-bottom: 18px;
+border-radius: 5px;
+font-size: 15px;
 }

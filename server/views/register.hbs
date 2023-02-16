@@ -21,13 +21,17 @@
         
         <div class="container">
             <div class="header">
-                <img id="retrogramLogo" src="../images/favicon(15x15).png" alt="retrogram-logo">
+                <img id="retrogramLogo"  src="/app/misc/windows-xp-logo.png" alt="windows-xp-logo">
               </div>
         <form class="login-form signup-form" action="/auth/register" method="POST">
+           <p class="descriptions">Name</p>
             <input type="text" name="name" placeholder="Name">
-            <input type="email" name="email" placeholder=" Email">
+            <p class="descriptions">Email</p>
+            <input type="email" name="email" placeholder="Email">
+            <p class="descriptions">Password</p>
             <input type="password" name="password" placeholder="Password">
-            <input type="password" name="passwordConfirm" placeholder="Confirm Password">
+            <p class="descriptions">Confirm Password</p>
+            <input type="password" name="passwordConfirm" placeholder=" Confirm Password">
             <button type="submit">Register</button>
         </form>
         {{#if message}}
