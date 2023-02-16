@@ -1,4 +1,6 @@
 /* ----------------------------- INNIT FUNCTION ----------------------------- */
+let asdasd = 0
+
 function init() {
     profileFetch()
     homeFetch()

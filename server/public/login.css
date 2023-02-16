@@ -85,6 +85,7 @@ body {
   width: 100%;
   overflow: hidden;
   line-height: 0;
+  pointer-events: none;
 }
 
 .waveBottom svg {
@@ -92,10 +93,12 @@ body {
   display: block;
   width: calc(164% + 1.3px);
   height: 246px;
+  pointer-events: none;
 }
 
 .waveBottom .shape-fill {
   fill: #2231A8;
+  pointer-events: none;
 }
 
 .waveTop {
@@ -106,6 +109,7 @@ body {
   overflow: hidden;
   line-height: 0;
   transform: rotate(180deg);
+  pointer-events: none;
 }
 
 .waveTop svg {
@@ -113,10 +117,12 @@ body {
   display: block;
   width: calc(150% + 1.3px);
   height: 172px;
+  pointer-events: none;
 }
 
 .waveTop .shape-fill {
   fill: #2231A8;
+  pointer-events: none;
 }
 .newUser{
 text-decoration: none;
