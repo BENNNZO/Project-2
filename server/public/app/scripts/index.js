@@ -1,12 +1,12 @@
 /* ----------------------------- INNIT FUNCTION ----------------------------- */
 function init() {
+    let dragElements = ['page-profile', 'page-home', 'edit-profile', 'add-post']
+    dragElements.forEach(e => {
+        dragElement(document.getElementById(e))
+    })
     profileFetch()
     homeFetch()
     generateTaskbar()
-    dragElement(document.getElementById('page-profile'))
-    dragElement(document.getElementById('page-home'))
-    dragElement(document.getElementById('edit-profile'))
-    dragElement(document.getElementById('add-post'))
     initInteractJS()
     initEventListeners()
     setInterval(() => {
@@ -18,14 +18,13 @@ function init() {
 function dragElement(element) {
     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0
     document.getElementById(`${element.id}-header`).onmousedown = (e) => {
-        console.log(e)
         e.preventDefault()
         pos3 = e.clientX // get mouse position
         pos4 = e.clientY
+        dragOnTop(element)
         document.onmouseup = () => { // stop moving if the mouse is released
             document.onmouseup = null
             document.onmousemove = null
-            element.style.zIndex = 1
         }
         document.onmousemove = (e) => { // function is called when mouse is moved
             e.preventDefault()
@@ -37,6 +36,17 @@ function dragElement(element) {
             element.style.left = `${Math.max(0, Math.min(element.getBoundingClientRect().left - pos1, document.body.clientWidth - element.clientWidth))}px`
         }
     }
+}
+
+function dragOnTop(element) {
+    let dragElements = ['page-profile', 'page-home', 'edit-profile', 'add-post']
+    dragElements.forEach(e => {
+        if (element.id === e) {
+            document.getElementById(e).style.zIndex = '2'
+        } else {
+            document.getElementById(e).style.zIndex = '1'
+        }
+    })
 }
 
 /* ----------------------- RESIZEABLE WINDOW FUNCTION ----------------------- */
@@ -54,7 +64,6 @@ function initInteractJS() {
                 Object.assign(event.target.style, {
                     width: `${event.rect.width}px`,
                     height: `${event.rect.height}px`,
-                    // transform: `translate(${x}px, ${y}px)`
                 })
     
                 Object.assign(event.target.dataset, { x, y })
@@ -70,10 +79,10 @@ function taskClick(e, selector) {
     document.getElementById(selector).classList.toggle('hide')
     console.log(document.getElementById(selector).children);
     console.log(e.children[0].getAttribute('src'));
-    if (e.children[0].getAttribute('src') === `../../ui/task_bar/tasks/${selector.replace('page-', '')}/index.png`) {
-        e.children[0].setAttribute('src', `../../ui/task_bar/tasks/${selector.replace('page-', '')}/pressed.png`)
+    if (e.children[0].getAttribute('src') === `/ui/task_bar/tasks/${selector.replace('page-', '')}/index.png`) {
+        e.children[0].setAttribute('src', `/ui/task_bar/tasks/${selector.replace('page-', '')}/pressed.png`)
     } else {
-        e.children[0].setAttribute('src', `../../ui/task_bar/tasks/${selector.replace('page-', '')}/index.png`)
+        e.children[0].setAttribute('src', `/ui/task_bar/tasks/${selector.replace('page-', '')}/index.png`)
     }
 }
 
@@ -172,7 +181,7 @@ function initEventListeners() {
 function closeWindow(task, window, selector) {
     task.classList.add('hide')
     window.classList.add('hide')
-    task.children[0].setAttribute('src', `../../ui/task_bar/tasks/${selector}/index.png`)
+    task.children[0].setAttribute('src', `/ui/task_bar/tasks/${selector}/index.png`)
 }
 
 function fullscreenWindow(e) {
