@@ -91,10 +91,12 @@ body {
 }
 .time p {
   position: absolute;
-  top: 10px;
+  top: 5px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 1.8rem;
+  font-size: 2.5rem;
+  color: rgb(20, 20, 20);
+  filter: drop-shadow(0 5px 0 rgba(10, 10, 10, 0.15));
 }
 
 .tasks-container {
@@ -141,6 +143,8 @@ body {
   position: relative;
   font-size: 2.5rem;
   left: 2px;
+  color: rgb(20, 20, 20);
+  filter: drop-shadow(0 5px 0 rgba(10, 10, 10, 0.15));
 }
 
 /* ---------------------------------- PAGES --------------------------------- */
@@ -158,6 +162,7 @@ body {
   outline-offset: -10px;
   top: 150px;
   left: 300px;
+  color: rgb(20, 20, 20);
 }
 
 .page-header {
@@ -187,11 +192,11 @@ body {
   gap: 10px;
 }
 .profile-header img {
-  padding: 10px;
   height: 45px;
   width: 45px;
-  box-shadow: inset 0px -5px hsl(0deg, 0%, 47%), inset -5px 0px hsl(0deg, 0%, 47%), inset 5px 0px white, inset 0px 5px white;
-  background-color: hsl(0deg, 0%, 80%);
+}
+.profile-header .options {
+  margin-left: auto;
 }
 .profile-header .profile-name {
   padding: 5px;
@@ -205,10 +210,62 @@ body {
   text-overflow: ellipsis;
 }
 
-/* ---------------------------------- MISC ---------------------------------- */
-.break-line {
-  margin: 10px 0;
+.profile-bio {
   width: 100%;
-  height: 5px;
-  background-color: hsl(0deg, 0%, 69%);
-}/*# sourceMappingURL=style.css.map */
+  padding: 10px;
+  margin: 10px 0;
+  box-shadow: inset 0px -5px hsl(0deg, 0%, 47%), inset -5px 0px hsl(0deg, 0%, 47%), inset 5px 0px white, inset 0px 5px white;
+  background-color: hsl(0deg, 0%, 80%);
+  font-size: 2rem;
+}
+
+.post {
+  padding: 10px;
+  margin: 10px 0;
+  box-shadow: inset 0px -5px hsl(0deg, 0%, 47%), inset -5px 0px hsl(0deg, 0%, 47%), inset 5px 0px white, inset 0px 5px white;
+  background-color: hsl(0deg, 0%, 80%);
+}
+.post .text {
+  font-size: 1.5rem;
+}
+.post .data {
+  font-size: 1rem;
+  color: rgb(75, 75, 75);
+}
+
+/* -------------------------------- EDIT BOX -------------------------------- */
+.edit-profile {
+  height: auto;
+  min-height: auto !important;
+  min-width: 350px !important;
+  max-width: 350px !important;
+}
+.edit-profile p, .edit-profile textarea, .edit-profile button {
+  padding: 0 5px;
+}
+.edit-profile * {
+  font-size: 2.5rem;
+  color: rgb(20, 20, 20);
+}
+.edit-profile #edit-profile-name {
+  resize: none;
+  width: 16ch;
+  border: 5px solid hsl(0deg, 0%, 47%);
+  margin: 0 5px;
+}
+.edit-profile #edit-profile-bio {
+  resize: none;
+  width: calc(100% - 10px);
+  border: 5px solid hsl(0deg, 0%, 47%);
+  margin: 0 5px;
+}
+.edit-profile #submit-profile-edit {
+  padding: 10px;
+  padding-right: 5px;
+  margin: 5px;
+  border: none;
+  box-shadow: inset 0px -5px hsl(0deg, 0%, 47%), inset -5px 0px hsl(0deg, 0%, 47%), inset 5px 0px white, inset 0px 5px white;
+  background-color: hsl(0deg, 0%, 80%);
+}
+
+/* ---------------------------------- MISC ---------------------------------- *//*# sourceMappingURL=style.css.map */

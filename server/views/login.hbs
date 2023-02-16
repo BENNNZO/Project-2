@@ -27,7 +27,7 @@
       <div class="header">
         <img
           id="windowsXPImg"
-          src="/misc/windows-xp-logo.png"
+          src="/app/misc/windows-xp-logo.png"
           alt="Windows XP Logo"
         />
       </div>
@@ -37,14 +37,14 @@
         </h4>
       {{/if}}
       <form class="login-form" action="/auth/login" method="POST">
-          <p class="descriptions">Email</p>
-            <input type="email" name="email" placeholder="Email">
-            <p class="descriptions">Password</p>
-            <input type="password" placeholder="Password">
-            <button type="submit" class="btn btn-prim">Log In</button>
+        <label for="email">Email</label>
+        <input type="email" name="email" placeholder="Email" />
+        <label for="password">Password</label>
+        <input name="password" type="password" placeholder="Password" />
+        <input type="submit" class="btn btn-prim" value="Log In" />
             <div class="separationLine">
-          <div class="or">----- OR -----</div>
-        </div>
+              <div class="or">----- OR -----</div>
+            </div>
          <a href="/register" class="register-button">Register</a>
       </form>
     </div>

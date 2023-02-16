@@ -31,6 +31,11 @@ Users.init(
         len: [3],
       },
     },
+    bio: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      defaultValue: "BIO"
+    },
   },
   {
     hooks: {

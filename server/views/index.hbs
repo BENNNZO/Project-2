@@ -3,11 +3,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="shortcut icon"
-      href="../misc/favicon(15x15).ico"
-      type="image/x-icon"
-    />
+    <link rel="shortcut icon" href="../misc/favicon(15x15).ico" type="image/x-icon" />
     <link rel="stylesheet" href="/app/styles/style.css" />
     <title>RETROGRAM TEST</title>
   </head>
@@ -16,39 +12,20 @@
       <!-- ------------------------------- TASKBAR ------------------------------- -->
       <div class="taskbar unselectable" id="taskbar">
         <div class="taskbar-background">
-          <img src="/ui/task_bar/bg/left.png" alt="taskbar-left" />
-          <img
-            src="/ui/task_bar/bg/middle.png"
-            alt="taskbar middle"
-            id="taskbar-middle"
-          />
-          <img src="/ui/task_bar/bg/right.png" alt="taskbar right" />
+          <img src="/ui/task_bar/bg/left.png" alt="taskbar-left"/>
+          <img src="/ui/task_bar/bg/middle.png" alt="taskbar middle" id="taskbar-middle"/>
+          <img src="/ui/task_bar/bg/right.png" alt="taskbar right"/>
         </div>
         <div class="taskbar-icons" id="taskbar-icons">
-          <img
-            src="/ui/task_bar/start/index.png"
-            alt="start button"
-            id="start-button"
-          />
+          <img src="/ui/task_bar/start/index.png" alt="start button" id="start-button" />
           <div class="start-container hide" id="start-container">
-            <img src="/ui/task_bar/start/logout.png" alt="logout button" />
+            <img src="/ui/task_bar/start/logout.png" alt="logout button" id="logout-button"/>
           </div>
           <div class="tasks-container">
-            <div
-              class="task hide"
-              id="task-profile"
-              onclick="taskClick(this, 'page-profile')"
-            >
-              <img
-                src="/ui/task_bar/tasks/profile/index.png"
-                alt="profile task"
-              />
+            <div class="task hide" id="task-profile" onclick="taskClick(this, 'page-profile')">
+              <img src="/ui/task_bar/tasks/profile/index.png" alt="profile task" />
             </div>
-            <div
-              class="task hide"
-              id="task-home"
-              onclick="taskClick(this, 'page-home')"
-            >
+            <div class="task hide" id="task-home" onclick="taskClick(this, 'page-home')" >
               <img src="/ui/task_bar/tasks/home/index.png" alt="profile home" />
             </div>
           </div>
@@ -60,81 +37,71 @@
       </div>
       <!-- ------------------------------ SHORTCUTS ------------------------------ -->
       <div class="desktop-shortcuts unselectable">
-        <div
-          class="shortcut"
-          ondblclick="taskClick(document.getElementById('task-profile'), 'page-profile')"
-        >
-          <img src="/ui/shortcut_icons/profile.png" alt="profile icon" />
+        <div class="shortcut" ondblclick="taskClick(document.getElementById('task-profile'), 'page-profile')" >
+          <img src="/ui/shortcut_icons/profile_transparent.png" alt="profile icon" />
           <p>PROFILE</p>
         </div>
-        <div
-          class="shortcut"
-          ondblclick="taskClick(document.getElementById('task-home'), 'page-home')"
-        >
-          <img src="/ui/shortcut_icons/home.png" alt="profile icon" />
+        <div class="shortcut" ondblclick="taskClick(document.getElementById('task-home'), 'page-home')" >
+          <img src="/ui/shortcut_icons/home_transparent.png" alt="profile icon" />
           <p>HOME</p>
         </div>
       </div>
       <!-- -------------------------------- PAGES -------------------------------- -->
       <div class="page resizable hide" id="page-profile">
-        <!-- PROFILE PAGE -->
         <div id="page-profile-header" class="page-header unselectable">
           <p>PROFILE</p>
-          <img
-            src="/ui/window/minimize.png"
-            alt="minimize-window"
-            onclick="taskClick(document.getElementById('task-profile'), 'page-profile')"
-          />
-          <img
-            src="/ui/window/full.png"
-            alt="fullscreen"
-            onclick="fullscreenWindow(this.parentElement.parentElement)"
-          />
-          <img
-            src="/ui/window/close.png"
-            alt="close-window"
-            onclick="closeWindow(document.getElementById('task-profile'), this.parentElement.parentElement)"
-          />
+          <img src="/ui/window/minimize.png" alt="minimize-window" onclick="taskClick(document.getElementById('task-profile'), 'page-profile')" />
+          <img src="/ui/window/full.png" alt="fullscreen" onclick="fullscreenWindow(this.parentElement.parentElement)" />
+          <img src="/ui/window/close.png" alt="close-window" onclick="closeWindow(document.getElementById('task-profile'), this.parentElement.parentElement, 'profile')" />
         </div>
         <div class="profile-content">
           <div class="profile-header">
-            <img src="/test/profile.png" alt="profile-picture" />
-            <img src="/ui/misc/edit_icon_nobg.png" alt="edit button" />
-            <p class="profile-name">PROFILE NAME</p>
-            <img src="/ui/misc/edit_icon_nobg.png" alt="edit button" />
+            {{!-- <img src="/test/profile.png" alt="profile-picture" />
+            <img src="/ui/misc/edit_icon_nobg.png" alt="edit button" /> --}}
+            <p class="profile-name" id="profile-name">PROFILE NAME</p>
+            <div class="options">
+              <img src="/ui/misc/edit_icon.png" alt="edit button" id="edit-button"/>
+              <img src="/ui/misc/post_icon.png" alt="post button" id="post-button"/>
+            </div>
           </div>
-          <div class="break-line"></div>
-          <p class="profile-bio">test bio for test profile</p>
-          <div class="break-line"></div>
-          <div class="profile-posts">
-
-          </div>
+          <p class="profile-bio" id="profile-bio">test bio for test profile</p>
+          <div class="profile-posts" id="profile-posts"></div>
         </div>
       </div>
       <div class="page resizable hide" id="page-home">
         <div id="page-home-header" class="page-header unselectable">
           <p>HOME</p>
-          <img
-            src="/ui/window/minimize.png"
-            alt="minimize-window"
-            onclick="taskClick(document.getElementById('task-home'), 'page-home')"
-          />
-          <img
-            src="/ui/window/full.png"
-            alt="fullscreen"
-            onclick="fullscreenWindow(this.parentElement.parentElement)"
-          />
-          <img
-            src="/ui/window/close.png"
-            alt="close-window"
-            onclick="closeWindow(document.getElementById('task-home'), this.parentElement.parentElement)"
-          />
+          <img src="/ui/window/minimize.png" alt="minimize-window" onclick="taskClick(document.getElementById('task-home'), 'page-home')" />
+          <img src="/ui/window/full.png" alt="fullscreen" onclick="fullscreenWindow(this.parentElement.parentElement)" />
+          <img src="/ui/window/close.png" alt="close-window" onclick="closeWindow(document.getElementById('task-home'), this.parentElement.parentElement, 'home')" />
         </div>
+        <div class="home-profile-posts" id="home-profile-posts"></div>
       </div>
+
+      <div class="edit-profile unselectable page hide" id="edit-profile">
+        <div class="page-header unselectable" id="edit-profile-header">
+          <p>EDIT PROFILE:</p>
+          <img src="/ui/window/close.png" alt="close-window" onclick="this.parentElement.parentElement.classList.add('hide')" />
+        </div>
+        <label for="profile-name">PROFILE NAME:</label>
+        <textarea name="profile-name" placeholder="PROFILE NAME" id="edit-profile-name" rows="1" maxlength="15"></textarea>
+        <label for="profile-bio">BIO:</label>
+        <textarea name="profile-bio" placeholder="BIO" id="edit-profile-bio" rows="8" maxlength="100"></textarea>
+        <input type="submit" id="submit-profile-edit" value="SAVE"></input>
+      </div>
+
+      {{!-- <div class="add-post unselectable page" id="add-post">
+        <div class="page-header unselectable" id="add-post-header">
+          <p>EDIT PROFILE:</p>
+          <img src="/ui/window/close.png" alt="close-window" onclick="this.parentElement.parentElement.classList.add('hide')" />
+        </div>
+        <label for="post-content">NEW POST:</label>
+        <textarea name="post-content" placeholder="TEXT" id="post-content" rows="8" maxlength="100"></textarea>
+        <input type="submit" id="submit-new-post" value="POST"></input>
+      </div> --}}
     </section>
-    <script
-      src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.js"
-    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.js"></script>
     <script src="/app/scripts/index.js"></script>
   </body>
 </html>
