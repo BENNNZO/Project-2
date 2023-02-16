@@ -1,8 +1,7 @@
 const mysql = require("mysql2");
-const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
-const db = mysql.createConnection(process.env.MYSQL_URI);
+const db = mysql.createConnection(process.env.JAWSDB_URL);
 
 exports.login = async (req, res) => {
   try {
